@@ -1,29 +1,7 @@
-import { useRef } from 'react';
-import { users } from '../assets/users';
+import users from '../assets/users';
+import UserRow from './userRow';
 
 const UsersTable = () => {
-  const userRow = users.map((user) => {
-    const trRef = useRef();
-
-    const buttonDelete = (
-      <button className="button__delete" onClick={() => userRowDelete(trRef)}>
-        Удалить
-      </button>
-    );
-
-    function userRowDelete(ref) {
-      ref.current.remove();
-    }
-
-    return (
-      <tr key={user._id} ref={trRef}>
-        <td>{user.name}</td>
-        <td>{user.age}</td>
-        <td>{buttonDelete}</td>
-      </tr>
-    );
-  });
-
   return (
     <table>
       <thead>
@@ -33,7 +11,11 @@ const UsersTable = () => {
           <th>Удалить</th>
         </tr>
       </thead>
-      <tbody>{userRow}</tbody>
+      <tbody>
+        {users.map((user) => (
+          <UserRow key={user._id} user={user} />
+        ))}
+      </tbody>
     </table>
   );
 };
