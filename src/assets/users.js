@@ -1,4 +1,4 @@
-export const users = [
+const users = [
   {
     _id: '67rdca3eeb7f6fgeed471815',
     name: 'Джон Дориан',
@@ -60,3 +60,5 @@ export const users = [
     age: 23,
   },
 ];
+
+export default users;
